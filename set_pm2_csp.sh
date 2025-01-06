@@ -4,6 +4,7 @@ file_path="/usr/local/lib/node_modules/pm2/lib/API/Serve.js"
 header_csp="response.setHeader('Content-Security-Policy', \"frame-ancestors 'self'\");"
 header_x_frame_options="response.setHeader('X-Frame-Options', 'SAMEORIGIN');"
 header_x_content_type_options="response.setHeader('X-Content-Type-Options', 'nosniff');"
+header_strict_transport_security="response.setHeader('strict-transport-security', 'max-age=63072000');"
 
 # Check if line is already present
 if ! grep -qF "$header_csp" "$file_path"; then
@@ -12,6 +13,7 @@ if ! grep -qF "$header_csp" "$file_path"; then
     $header_csp\n\
     $header_x_frame_options\n\
     $header_x_content_type_options\n\
+    $header_strict_transport_security\n\
 " "$file_path"
 else
   echo "Headers already added."
